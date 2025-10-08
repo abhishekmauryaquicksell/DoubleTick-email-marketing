@@ -1,41 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>DoubleTick Email Signature Generator</title>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    }
-    h2 { color: #25D366; }
-    input {
-      padding: 8px;
-      margin: 5px 0;
-      width: 300px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #25D366;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    button:hover { background-color: #1fa64b; }
-    #preview {
-      margin-top: 20px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      padding: 20px;
-    }
-    textarea {
-      width: 100%;
-      height: 300px;
-      margin-top: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>DoubleTick Email Signature Generator</title>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background-color: #f5f5f5;
+}
+h2 { color: #25D366; }
+input {
+  padding: 8px;
+  margin: 5px 0;
+  width: 300px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+button:hover { background-color: #1fa64b; }
+#preview {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 20px;
+}
+textarea { width: 100%; height: 300px; margin-top: 10px; display: none; }
+a img { text-decoration: none; display: inline-block; vertical-align: middle; }
+</style>
 </head>
 <body>
 
@@ -60,9 +57,9 @@
 <h3>Live Preview:</h3>
 <div id="preview"></div>
 
-<h3>Copy HTML Code:</h3>
+<button onclick="copyPreview()">Copy Signature</button>
+<button onclick="toggleHTML()">Show/Hide HTML Code</button>
 <textarea id="signatureHTML" readonly></textarea>
-<button onclick="copyToClipboard()">Copy HTML</button>
 
 <script>
 const template = `
@@ -88,13 +85,13 @@ const template = `
               </tr>
               <tr>
                 <td style="padding-bottom:12px;">
-                  <a href="https://www.instagram.com/doubletick.io/" target="_blank" rel="noopener" style="margin-right:12px;">
+                  <a href="https://www.instagram.com/doubletick.io/" target="_blank" rel="noopener" style="text-decoration:none; margin-right:12px;">
                     <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Instagram_icon.png" alt="Instagram" style="width:24px; height:24px;"/>
                   </a>
-                  <a href="https://www.linkedin.com/company/doubletickcx" target="_blank" rel="noopener" style="margin-right:12px;">
+                  <a href="https://www.linkedin.com/company/doubletickcx" target="_blank" rel="noopener" style="text-decoration:none; margin-right:12px;">
                     <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Linkedin-logo-blue-In-square-40px.png" alt="LinkedIn" style="width:24px; height:24px;"/>
                   </a>
-                  <a href="https://facebook.com/people/DoubleTick-by-QuickSell/100086773043976/" target="_blank" rel="noopener">
+                  <a href="https://facebook.com/people/DoubleTick-by-QuickSell/100086773043976/" target="_blank" rel="noopener" style="text-decoration:none;">
                     <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/150ef1cbd204bb95ef9717c58f08714903029ed7/Logo_de_Facebook.png" alt="Facebook" style="width:24px; height:24px;"/>
                   </a>
                 </td>
@@ -159,12 +156,20 @@ function generateSignature() {
   document.getElementById("signatureHTML").value = signatureHTML;
 }
 
-function copyToClipboard() {
-  const textarea = document.getElementById("signatureHTML");
-  textarea.select();
-  textarea.setSelectionRange(0, 99999); // mobile compatibility
-  navigator.clipboard.writeText(textarea.value);
-  alert("Signature HTML copied to clipboard!");
+function copyPreview() {
+  const preview = document.getElementById("preview");
+  const range = document.createRange();
+  range.selectNode(preview);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges();
+  alert("Signature copied! You can paste it directly in Gmail.");
+}
+
+function toggleHTML() {
+  const htmlArea = document.getElementById("signatureHTML");
+  htmlArea.style.display = htmlArea.style.display === "none" ? "block" : "none";
 }
 </script>
 
