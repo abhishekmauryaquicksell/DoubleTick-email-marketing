@@ -27,11 +27,11 @@ button:hover { background-color: #1fa64b; }
 #preview {
   margin-top: 20px;
   border: 1px solid #ccc;
-  background-color: #fff;
+  background-color: #ffffff; /* ensure preview has white background */
   padding: 20px;
 }
 textarea { width: 100%; height: 300px; margin-top: 10px; display: none; }
-a img { text-decoration: none; display: inline-block; vertical-align: middle; }
+a img { text-decoration: none; vertical-align:middle; display:block; }
 </style>
 </head>
 <body>
@@ -63,7 +63,7 @@ a img { text-decoration: none; display: inline-block; vertical-align: middle; }
 
 <script>
 const template = `
-<table cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; font-family:Arial, Helvetica, sans-serif;">
+<table cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; font-family:Arial, Helvetica, sans-serif; background-color:#ffffff;">
   <tr>
     <td style="padding:0;">
       <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
@@ -86,13 +86,13 @@ const template = `
               <tr>
                 <td style="padding-bottom:12px;">
                   <a href="https://www.instagram.com/doubletick.io/" target="_blank" rel="noopener" style="text-decoration:none; margin-right:12px;">
-                    <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Instagram_icon.png" alt="Instagram" style="width:24px; height:24px;"/>
+                    <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Instagram_icon.png" alt="Instagram" style="width:24px; height:24px; display:block; vertical-align:middle;"/>
                   </a>
                   <a href="https://www.linkedin.com/company/doubletickcx" target="_blank" rel="noopener" style="text-decoration:none; margin-right:12px;">
-                    <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Linkedin-logo-blue-In-square-40px.png" alt="LinkedIn" style="width:24px; height:24px;"/>
+                    <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Linkedin-logo-blue-In-square-40px.png" alt="LinkedIn" style="width:24px; height:24px; display:block; vertical-align:middle;"/>
                   </a>
                   <a href="https://facebook.com/people/DoubleTick-by-QuickSell/100086773043976/" target="_blank" rel="noopener" style="text-decoration:none;">
-                    <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/150ef1cbd204bb95ef9717c58f08714903029ed7/Logo_de_Facebook.png" alt="Facebook" style="width:24px; height:24px;"/>
+                    <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/150ef1cbd204bb95ef9717c58f08714903029ed7/Logo_de_Facebook.png" alt="Facebook" style="width:24px; height:24px; display:block; vertical-align:middle;"/>
                   </a>
                 </td>
               </tr>
@@ -157,24 +157,21 @@ function generateSignature() {
 }
 
 function copyPreview() {
-  // Get the rendered preview content
   const preview = document.getElementById("preview").innerHTML;
 
-  // Create a temporary container to hold the content
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = preview;
-  tempDiv.style.position = "absolute"; // prevent layout shift
-  tempDiv.style.left = "-9999px"; // hide off-screen
+  tempDiv.style.position = "absolute";
+  tempDiv.style.left = "-9999px";
+  tempDiv.style.backgroundColor = "#ffffff"; // ensure white background
   document.body.appendChild(tempDiv);
 
-  // Select the content
   const range = document.createRange();
   range.selectNodeContents(tempDiv);
   const sel = window.getSelection();
   sel.removeAllRanges();
   sel.addRange(range);
 
-  // Copy to clipboard
   try {
     document.execCommand("copy");
     alert("Signature copied! You can paste it directly in Gmail.");
@@ -182,7 +179,6 @@ function copyPreview() {
     alert("Failed to copy. Please try manually.");
   }
 
-  // Cleanup
   sel.removeAllRanges();
   document.body.removeChild(tempDiv);
 }
