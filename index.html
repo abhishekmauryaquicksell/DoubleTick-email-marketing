@@ -157,21 +157,34 @@ function generateSignature() {
 }
 
 function copyPreview() {
-  // Get the HTML from the template (without extra container padding)
-  const signatureHTML = document.getElementById("signatureHTML").value;
+  // Get the rendered preview content
+  const preview = document.getElementById("preview").innerHTML;
 
-  // Create a temporary textarea to copy clean HTML
-  const tempTextarea = document.createElement("textarea");
-  tempTextarea.value = signatureHTML;
-  document.body.appendChild(tempTextarea);
+  // Create a temporary container to hold the content
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = preview;
+  tempDiv.style.position = "absolute"; // prevent layout shift
+  tempDiv.style.left = "-9999px"; // hide off-screen
+  document.body.appendChild(tempDiv);
 
-  tempTextarea.select();
-  tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+  // Select the content
+  const range = document.createRange();
+  range.selectNodeContents(tempDiv);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
 
-  document.execCommand("copy");
-  document.body.removeChild(tempTextarea);
+  // Copy to clipboard
+  try {
+    document.execCommand("copy");
+    alert("Signature copied! You can paste it directly in Gmail.");
+  } catch (err) {
+    alert("Failed to copy. Please try manually.");
+  }
 
-  alert("Signature copied! You can paste it directly in Gmail.");
+  // Cleanup
+  sel.removeAllRanges();
+  document.body.removeChild(tempDiv);
 }
 
 function toggleHTML() {
