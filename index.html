@@ -157,13 +157,20 @@ function generateSignature() {
 }
 
 function copyPreview() {
-  const preview = document.getElementById("preview");
-  const range = document.createRange();
-  range.selectNode(preview);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
+  // Get the HTML from the template (without extra container padding)
+  const signatureHTML = document.getElementById("signatureHTML").value;
+
+  // Create a temporary textarea to copy clean HTML
+  const tempTextarea = document.createElement("textarea");
+  tempTextarea.value = signatureHTML;
+  document.body.appendChild(tempTextarea);
+
+  tempTextarea.select();
+  tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+
   document.execCommand("copy");
-  window.getSelection().removeAllRanges();
+  document.body.removeChild(tempTextarea);
+
   alert("Signature copied! You can paste it directly in Gmail.");
 }
 
