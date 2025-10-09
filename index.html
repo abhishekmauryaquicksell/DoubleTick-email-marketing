@@ -27,7 +27,7 @@ button:hover { background-color: #1fa64b; }
 #preview {
   margin-top: 20px;
   border: 1px solid #ccc;
-  background-color: #ffffff; /* ensure preview has white background */
+  background-color: #ffffff;
   padding: 20px;
 }
 textarea { width: 100%; height: 300px; margin-top: 10px; display: none; }
@@ -45,9 +45,6 @@ a img { text-decoration: none; vertical-align:middle; display:block; }
   <label>Designation:</label><br>
   <input type="text" id="designation" placeholder="Enter your designation" required><br>
 
-  <label>Email:</label><br>
-  <input type="email" id="email" placeholder="Enter your email" required><br>
-
   <label>Phone:</label><br>
   <input type="text" id="phone" placeholder="Enter your phone number" required><br>
 
@@ -63,22 +60,22 @@ a img { text-decoration: none; vertical-align:middle; display:block; }
 
 <script>
 const template = `
-<table cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; font-family:Arial, Helvetica, sans-serif; background-color:#ffffff;">
+<table cellpadding="0" cellspacing="0" border="0" style="max-width:570px; width:95%; font-family:Arial, Helvetica, sans-serif; background-color:#ffffff;">
   <tr>
     <td style="padding:0;">
       <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
         <tr>
-          <td style="padding:20px 20px 20px 0; vertical-align:middle; text-align:center;">
+          <td style="padding:19px 19px 19px 0; vertical-align:middle; text-align:center;">
             <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/3003558e978139d21bb3f1245f4da323c3bfb64f/transperant%20logo.png" 
                  alt="DoubleTick" 
-                 style="width:180px; height:auto; display:inline-block;"/>
+                 style="width:171px; height:auto; display:inline-block;"/>
           </td>
-          <td style="padding:20px 0; vertical-align:middle; border-left:3px solid #25D366;">
-            <table cellpadding="0" cellspacing="0" border="0" style="width:100%; padding-left:20px;">
-              <tr><td style="padding-bottom:4px;"><span style="font-size:18px; font-weight:700; color:#000;">{{NAME}}</span></td></tr>
+          <td style="padding:19px 0; vertical-align:middle; border-left:3px solid #25D366;">
+            <table cellpadding="0" cellspacing="0" border="0" style="width:100%; padding-left:19px;">
+              <tr><td style="padding-bottom:4px;"><span style="font-size:17px; font-weight:700; color:#000;">{{NAME}}</span></td></tr>
               <tr>
                 <td style="padding-bottom:8px;">
-                  <span style="font-size:14px; color:#000; font-weight:500;">{{DESIGNATION}}</span>
+                  <span style="font-size:13px; color:#000; font-weight:500;">{{DESIGNATION}}</span>
                   <span style="color:#999; margin:0 6px;">|</span>
                   <a href="https://doubletick.io" style="color:#1a73e8; text-decoration:none; font-weight:600;">DoubleTick</a>
                 </td>
@@ -86,32 +83,20 @@ const template = `
               <tr>
   <td style="padding-bottom:12px;">
     <a href="https://www.instagram.com/doubletick.io/" target="_blank" rel="noopener" style="text-decoration:none; margin-right:12px; display:inline-block; vertical-align:middle;">
-      <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Instagram_icon.png" alt="Instagram" style="width:24px; height:24px; display:inline-block; vertical-align:middle;"/>
+      <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Instagram_icon.png" alt="Instagram" style="width:23px; height:23px; display:inline-block; vertical-align:middle;"/>
     </a>
     <a href="https://www.linkedin.com/company/doubletickcx" target="_blank" rel="noopener" style="text-decoration:none; margin-right:12px; display:inline-block; vertical-align:middle;">
-      <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Linkedin-logo-blue-In-square-40px.png" alt="LinkedIn" style="width:24px; height:24px; display:inline-block; vertical-align:middle;"/>
+      <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/9e4c273d3ba00278252e0fd10e73442d80ea51ee/Linkedin-logo-blue-In-square-40px.png" alt="LinkedIn" style="width:23px; height:23px; display:inline-block; vertical-align:middle;"/>
     </a>
     <a href="https://facebook.com/people/DoubleTick-by-QuickSell/100086773043976/" target="_blank" rel="noopener" style="text-decoration:none; display:inline-block; vertical-align:middle;">
-      <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/150ef1cbd204bb95ef9717c58f08714903029ed7/Logo_de_Facebook.png" alt="Facebook" style="width:24px; height:24px; display:inline-block; vertical-align:middle;"/>
+      <img src="https://raw.githubusercontent.com/abhishekmauryaquicksell/DoubleTick-email-marketing/150ef1cbd204bb95ef9717c58f08714903029ed7/Logo_de_Facebook.png" alt="Facebook" style="width:23px; height:23px; display:inline-block; vertical-align:middle;"/>
     </a>
   </td>
 </tr>    
               <tr>
-                <td style="padding-bottom:4px; font-size:14px;">
+                <td style="padding-bottom:4px; font-size:13px;">
                   <span style="font-weight:600; color:#000;">Ph:</span>
                   <a href="tel:{{PHONE}}" style="color:#1a73e8; text-decoration:none; font-weight:700;">{{PHONE}}</a>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding-bottom:4px; font-size:13px;">
-                  <a href="mailto:{{EMAIL}}" style="color:#1a73e8; text-decoration:none;">{{EMAIL}}</a>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding-top:4px; font-size:13px;">
-                  <a href="https://doubletick.io" style="color:#1a73e8; text-decoration:none; font-weight:500;">doubletick.io</a>
-                  <span style="color:#ccc; margin:0 6px;">|</span>
-                  <a href="https://quicksell.co" style="color:#1a73e8; text-decoration:none; font-weight:500;">quicksell.co</a>
                 </td>
               </tr>
             </table>
@@ -122,7 +107,7 @@ const template = `
   </tr>
   <tr>
     <td style="padding:0;">
-      <div style="height:4px; background:linear-gradient(90deg, #25D366 0%, #00a854 100%); margin:15px 0 10px 0;"></div>
+      <div style="height:4px; background:linear-gradient(90deg, #25D366 0%, #00a854 100%); margin:14px 0 10px 0;"></div>
     </td>
   </tr>
   <tr>
@@ -143,13 +128,11 @@ const template = `
 function generateSignature() {
   const name = document.getElementById("name").value;
   const designation = document.getElementById("designation").value;
-  const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
 
   let signatureHTML = template
     .replaceAll("{{NAME}}", name)
     .replaceAll("{{DESIGNATION}}", designation)
-    .replaceAll("{{EMAIL}}", email)
     .replaceAll("{{PHONE}}", phone);
 
   document.getElementById("preview").innerHTML = signatureHTML;
@@ -163,7 +146,7 @@ function copyPreview() {
   tempDiv.innerHTML = preview;
   tempDiv.style.position = "absolute";
   tempDiv.style.left = "-9999px";
-  tempDiv.style.backgroundColor = "#ffffff"; // ensure white background
+  tempDiv.style.backgroundColor = "#ffffff";
   document.body.appendChild(tempDiv);
 
   const range = document.createRange();
